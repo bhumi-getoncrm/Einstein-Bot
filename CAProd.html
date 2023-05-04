@@ -478,321 +478,328 @@
             <iframe src="" id="meetRender" allow="camera; microphone" style="height: 100%; width:100%;"></iframe>
 	    </div>
 
-        <!-- script for the Einstein chatbot -->
-        <script type='text/javascript'>
-	    $(document).on('click', '.letsChatbutton', function () {
-		if($(".sidebarMinimized").length > 0 ){
-		    console.log('minimized');
-	            $('.minimizedText').trigger('click');
-		} else {
-		    console.log('firsttime');
-		    $(".helpButtonEnabled").trigger('click');;
-		}
-	    });
-            var initESW = function (gslbBaseURL) {
-
-		
-                embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-                embedded_svc.settings.entryFeature = 'LiveAgent';
-                embedded_svc.settings.displayHelpButton = true;
-                embedded_svc.settings.language = "";
-
-                embedded_svc.settings.waitingStateBackgroundImgURL =
-                    "https://americanstandard.box.com/shared/static/vnwruhso1ymjlwvq97h38605dawks6u0.png";
-                embedded_svc.settings.defaultMinimizedText =
-                    "Chat & Co-Browse with an Expert";
-
-                embedded_svc.init(
-                    'https://lwta.my.salesforce.com',
-		                'https://lixilamerica.force.com/LWTACustomerService',
-                    gslbBaseURL,
-                    '00D1N000001UL7U',
-                    'Bot_Chatbots_Group',
-                    {
-                        baseLiveAgentContentURL: 'https://c.la4-c3-ph2.salesforceliveagent.com/content',
-                        deploymentId: '5723l000000CmZ3',
-                        buttonId: '5731N000000Tawx',
-                        baseLiveAgentURL: 'https://d.la4-c3-ph2.salesforceliveagent.com/chat',
-                        eswLiveAgentDevName: 'Bot_Chatbots_Group',
-                        isOfflineSupportEnabled: false
-                    }
-                );
-	    	        embedded_svc.addEventHandler("onChatReconnectSuccessful", function() {
-		                console.log("onChatReconnectSuccessful event was fired.  liveAgentSessionKey was ");
-		            });
-                embedded_svc.addEventHandler("afterMinimize", function() {
-                  var sidebar = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI');
-                  var height = sidebar.clientHeight;
-                  var width = sidebar.clientWidth;
-                  window.parent.postMessage({
-                    frameHeight: height,
-                    frameWidth: width
-                   }, '*');
-                });
-
-                embedded_svc.addEventHandler("afterMaximize", function() {
-                  var container = document.querySelector('.dockableContainer');
-                  var height = container.clientHeight;
-                  var width = container.clientWidth;
-                  window.parent.postMessage({
-                    frameHeight: embedded_svc.settings.widgetHeight,
-                    frameWidth: embedded_svc.settings.widgetWidth
-                  }, '*');
-                });
-                embedded_svc.addEventHandler("afterDestroy", function() {
-                  var height = document.querySelector('.helpButton').clientHeight;
-                  var width = document.querySelector('.helpButton').clientWidth;
-                  window.parent.postMessage({
-                    frameHeight: height,
-                    frameWidth: width
-                  }, '*');
-                });
-            };
-
-            if (!window.embedded_svc) {
-                var s = document.createElement('script');
-                s.setAttribute('src', 'https://lwta.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-                s.onload = function () {
-                    initESW(null);
-                };
-                document.body.appendChild(s);
-            } else {
-                initESW('https://service.force.com');
-            }
-        </script>
-
-
-
-        <!-- script for the  cobrowse -->
-        <script type="text/javascript">
-            (function (w, t, c, p, s, e) {
-                p = new Promise(function (r) {
-                    w[c] = {
-                        client: function () {
-                            if (!s) {
-                                s = document.createElement(t);
-                                s.src = "https://js.cobrowse.io/CobrowseIO.js";
-                                s.async = 1;
-                                e = document.getElementsByTagName(t)[0];
-                                e.parentNode.insertBefore(s, e);
-                                s.onload = function () {
-                                    r(w[c]);
-                                };
-                            }
-                            return p;
-                        },
-                    };
-                });
-            })(window, "script", "CobrowseIO");
-            CobrowseIO.license = "8yoah_DcJ7PvAA";
-            CobrowseIO.client().then(function () {
-                var button = document.createElement("div");
-                button.className = "__cbio_ignored";
-                button.textContent = "End cobrowse session";
-                button.style.fontFamily = "sans-serif";
-                button.style.padding = "10px 13px";
-                button.style.fontSize = "13px";
-                button.style.color = "white";
-                button.style.boxShadow = "0px 2px 5px #33333344";
-                button.style.cursor = "pointer";
-                button.style.borderRadius = "0px";
-                button.style.background = "#165788";
-                button.style.position = "fixed";
-                button.style.zIndex = "2147483647";
-                button.style.bottom = "20px";
-                button.style.left = "50%";
-                button.style.transform = "translateX(-50%)";
-                button.addEventListener("click", function () {
-                    if (CobrowseIO.currentSession) CobrowseIO.currentSession.end();
-                    button.remove();
-                });
-                var border = document.createElement("div");
-                border.className = "__cbio_ignored";
-                CobrowseIO.showSessionControls = function () {
-                    document.body.appendChild(button).setAttribute("id", "custom-close-cobrowse");
-                    document.body.appendChild(border).setAttribute("id", "custom-border-cobrowse");
-                    jQuery(".embeddedServiceHelpButton").addClass("__cbio_ignored");
-                    jQuery(".embeddedServiceSidebar").addClass("__cbio_ignored");
-                }
-                CobrowseIO.hideSessionControls = function () {
-                    var a = document.getElementById("custom-border-cobrowse");
-                    var b = document.getElementById("custom-close-cobrowse");
-                    if (a) {
-                        a.remove();
-                    }
-                    if (b) {
-                        b.remove();
-                    }
-                };
-                CobrowseIO.start();
-                CobrowseIO.createSessionCode().then(function (code) {
-                    var AppCode = code;
-                    jQuery(document).ready(function () {
-                        var count = 0;
-                        jQuery(document).keypress(function (e) {
-                            if (e.key === "l") {
-                                count += 1;
-                                if (count == 5) {
-                                    alert("your cobrowse code is: " + AppCode);
-                                    count = 0;
-                                }
-                            } else {
-                                count = 0;
-                            }
-                        });
-                    });
-                });
-            });
-        </script>
-
-        <!-- script fot remove agnet user id -->
-        <script type="text/javascript">
-            document.addEventListener("setConfigData", function (event) {
-                if (event.detail) {
-                    var r = document.querySelector(':root');
-                    r.style.setProperty('--color', event.detail.textColor);
-                    if (event.detail.bottonStyle == 'Square') {
-                        r.style.setProperty('--menuButtonRadius', '0px');
-                        r.style.setProperty('--otherRadius', '0');
-                    } else if (event.detail.bottonStyle == 'Round') {
-                        r.style.setProperty('--menuButtonRadius', '50px');
-                        r.style.setProperty('--otherRadius', '16px');
-                    }
-                }
-		setTimeout(function() { 
-			var objDiv = document.querySelector(".messageArea.smoothScroll");
-			console.log(objDiv);
-			if(objDiv){
-				objDiv.scrollTop = objDiv.scrollHeight;
-			}
-		},3500);
-            });
-
-            document.addEventListener("openBACDialog", function (event) {
-                
-                let bacurl = event.detail.data;
-                let iframeEle = document.getElementById("baciframe");
-                iframeEle.setAttribute("src", bacurl);
-                if(bacurl != '' && bacurl != null){
-                    let modal = document.getElementById("bac-iframe-modal");
-                    if (!modal.classList.contains('in')) {
-                        modal.style.display = "block";
-                        modal.classList.remove('out');
-                        modal.classList.add('in');
-                    }
-                    var btnClose = document.getElementById("closeModal");
-                    btnClose.onclick = function() {
-                        modal.style.display = "none";
-                        modal.classList.remove('in');
-                        modal.classList.add('out');
-                    }
-                }
-
-            });
-            
-            document.addEventListener("setBotName", function (event) {
-               	let agentName = event.detail.data.data.agentName;
-               	let agentType = event.detail.data.data.agentType;
-               	let fname = agentName.split("_")[0];
-		console.log('agentName');
-		let msgsName = document.querySelectorAll(".nameAndTimeContent > .agentName");
-                let element = document.querySelector(".eventMessage > .uiOutputRichText");
-		    
-                let chatStartEle = document.querySelector(".chatSessionStartTime > #chatWindowCurrentDesc");
-                if(chatStartEle){
-                    let result = chatStartEle.textContent.includes("Chat started");
-                    if(result){
-                        chatStartEle.textContent = 'Chat Started';
-                    }
-                }
-                if (msgsName.length > 0 && element == null && agentType != 'agent') {
-                   
-                    msgsName.forEach(ele => {
-                        if(ele.textContent.trim() != '' && ele.textContent.trim() != null){
-                                ele.textContent = fname;
-                                
-                        }
-                    });
-                }
-		
-		setTimeout(function() { 
-		    let msgsNames = document.querySelectorAll(".nameAndTimeContent > .agentName");
-
-		    if (msgsNames.length > 0 && agentType == 'agent') {
-			let lastMsgA = msgsNames[msgsNames.length - 1];
-			if (lastMsgA.textContent.trim() != '' && lastMsgA.textContent.trim() != null && lastMsgA.textContent != fname) {
-			    lastMsgA.textContent = fname;
-			}
-		    }
-		},400);
-            });
-            
-            function addListeners(meetUrl,toggleWindow){
-                let smeet = document.getElementById('screenmeet');
-                console.log("add lisner call");
-                console.log({toggleWindow});
-                let toggle = JSON.parse(toggleWindow);
-                if(smeet){
-                    console.log("inside smeet");
-                    if(toggle){
-                        console.log("toggle win true");
-                        smeet.style.display = 'block';
-                    }else{
-                        console.log("toggle win false");
-                        smeet.style.display = 'none';
-                        iframeEle = document.getElementById('meetRender');
-                        if(iframeEle){
-                            iframeEle.src = "";
-
-                        }
-                    }
-                }
-                console.log({meetUrl});
-                if(meetUrl)	{
-                    iframeEle = document.getElementById('meetRender');
-                    if(iframeEle){
-                        iframeEle.src = meetUrl
-
-                    }
-                }
-                document.getElementById('screenmeet').addEventListener('mousedown', mouseDown, false);
-                window.addEventListener('mouseup', mouseUp, false);
+        <script>
+		function addListeners(meetUrl, toggleWindow) {
+    let smeet = document.getElementById('screenmeet');
+    console.log("add lisner call");
+    console.log({
+        toggleWindow
+    });
+    let toggle = JSON.parse(toggleWindow);
+    if (smeet) {
+        console.log("inside smeet");
+        if (toggle) {
+            console.log("toggle win true");
+            smeet.style.display = 'block';
+        } else {
+            console.log("toggle win false");
+            smeet.style.display = 'none';
+            iframeEle = document.getElementById('meetRender');
+            if (iframeEle) {
+                iframeEle.src = "";
 
             }
-            function mouseUp(){
-                window.removeEventListener('mousemove', divMove, true);
-            }
-
-            function mouseDown(e){
-                window.addEventListener('mousemove', divMove, true);
-            }
-
-		function divMove(e){
-			var div = document.getElementById('screenmeet');
-			div.style.position = 'absolute';
-			div.style.top = e.clientY + 'px';
-			div.style.left = e.clientX + 'px';
-		}
-		document.addEventListener('screenMeetRender', function(event){
-			console.log({event});
-			console.log('URL', event.detail.data.data.screenMeet);
-			  let MeetURL = event.detail.data.data.screenMeet;
-			  let toggleWindow = event.detail.data.data.toggleWindow;
-			  console.log({toggleWindow});
-			  if(MeetURL){
-				  //let url =  MeetURL.split('\'')[1];
-				  addListeners(MeetURL,toggleWindow);
-			  }
-        });
-        function closeDiv(){
-              let smeet = document.getElementById('screenmeet');
-              iframeEle = document.getElementById('meetRender');
-                if(iframeEle){
-                    iframeEle.src = "";
-
-                }
-              smeet.style.display = 'none';
         }
-        </script>
+    }
+    console.log({
+        meetUrl
+    });
+    if (meetUrl) {
+        iframeEle = document.getElementById('meetRender');
+        if (iframeEle) {
+            iframeEle.src = meetUrl
+
+        }
+    }
+    document.getElementById('screenmeet').addEventListener('mousedown', mouseDown, false);
+    window.addEventListener('mouseup', mouseUp, false);
+
+}
+
+function mouseUp() {
+    window.removeEventListener('mousemove', divMove, true);
+}
+
+function mouseDown(e) {
+    window.addEventListener('mousemove', divMove, true);
+}
+
+function divMove(e) {
+    var div = document.getElementById('screenmeet');
+    div.style.position = 'absolute';
+    div.style.top = e.clientY + 'px';
+    div.style.left = e.clientX + 'px';
+}
+
+document.addEventListener('screenMeetRender', function(event) {
+    console.log({
+        event
+    });
+    console.log('URL', event.detail.data.data.screenMeet);
+    let MeetURL = event.detail.data.data.screenMeet;
+    let toggleWindow = event.detail.data.data.toggleWindow;
+    console.log({
+        toggleWindow
+    });
+    if (MeetURL) {
+        //let url =  MeetURL.split('\'')[1];
+        addListeners(MeetURL, toggleWindow);
+    }
+});
+function closeDiv() {
+    let smeet = document.getElementById('screenmeet');
+    iframeEle = document.getElementById('meetRender');
+    if (iframeEle) {
+        iframeEle.src = "";
+
+    }
+    smeet.style.display = 'none';
+}
+
+function showBot() {
+    let tiggerBot = document.querySelector('.helpButtonEnabled');
+    let minimisedBot = document.querySelectorAll('.sidebarMinimized');
+    let openBot = document.querySelector('.minimizedText');
+    if (minimisedBot.length > 0) {
+        //console.log('minimized');
+        openBot.click();
+    } else {
+        //console.log('firsttime');
+        tiggerBot.click();
+        ;
+    }
+}
+
+var initESW = function(gslbBaseURL) {
+
+    embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+    embedded_svc.settings.entryFeature = 'LiveAgent';
+    embedded_svc.settings.displayHelpButton = false;
+    embedded_svc.settings.language = "";
+
+    embedded_svc.settings.waitingStateBackgroundImgURL = "https://americanstandard.box.com/shared/static/nb8hvf8hzdx6oiby8a0h26iy2uxmcehh.png";
+    embedded_svc.settings.defaultMinimizedText = "Chat & Co-Browse with an Expert";
+
+    embedded_svc.init('https://lwta.my.salesforce.com', 'https://lixilamerica.force.com/LWTACustomerService', gslbBaseURL, '00D1N000001UL7U', 'Bot_Chatbots_Group', {
+        baseLiveAgentContentURL: 'https://c.la4-c3-ph2.salesforceliveagent.com/content',
+        deploymentId: '5723l000000CmZ3',
+        buttonId: '5733l000000LG27',
+        baseLiveAgentURL: 'https://d.la4-c3-ph2.salesforceliveagent.com/chat',
+        eswLiveAgentDevName: 'Bot_Chatbots_Group',
+        isOfflineSupportEnabled: false
+    });
+    embedded_svc.addEventHandler("onHelpButtonClick", function() {
+        let btn = document.querySelector('.salesforce-chat-container');
+        btn.classList.add('bubble-disable');
+        console.log("onHelpButtonClick");
+    });
+    embedded_svc.addEventHandler("afterMinimize", function() {
+        var sidebar = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI');
+        var height = sidebar.clientHeight;
+        var width = sidebar.clientWidth;
+        window.parent.postMessage({
+            frameHeight: height,
+            frameWidth: width
+        }, '*');
+    });
+
+    embedded_svc.addEventHandler("afterMaximize", function() {
+        var container = document.querySelector('.dockableContainer');
+        var height = container.clientHeight;
+        var width = container.clientWidth;
+        window.parent.postMessage({
+            frameHeight: embedded_svc.settings.widgetHeight,
+            frameWidth: embedded_svc.settings.widgetWidth
+        }, '*');
+    });
+
+    embedded_svc.addEventHandler("afterDestroy", function() {
+        let btn = document.querySelector('.salesforce-chat-container');
+        btn.classList.remove('bubble-disable');
+        var height = document.querySelector('.helpButton').clientHeight;
+        var width = document.querySelector('.helpButton').clientWidth;
+        window.parent.postMessage({
+            frameHeight: height,
+            frameWidth: width
+        }, '*');
+    });
+};
+
+if (!window.embedded_svc) {
+    var s = document.createElement('script');
+    s.setAttribute('src', 'https://lwta.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+    s.onload = function() {
+        initESW(null);
+    }
+    ;
+    document.body.appendChild(s);
+} else {
+    initESW('https://service.force.com');
+}
+
+(function(w, t, c, p, s, e) {
+    p = new Promise(function(r) {
+        w[c] = {
+            client: function() {
+                if (!s) {
+                    s = document.createElement(t);
+                    s.src = "https://js.cobrowse.io/CobrowseIO.js";
+                    s.async = 1;
+                    e = document.getElementsByTagName(t)[0];
+                    e.parentNode.insertBefore(s, e);
+                    s.onload = function() {
+                        r(w[c]);
+                    }
+                    ;
+                }
+                return p;
+            },
+        };
+    }
+    );
+}
+)(window, "script", "CobrowseIO");
+CobrowseIO.license = "DrXH9Nl_javG-w";
+CobrowseIO.client().then(function() {
+    var button = document.createElement("div");
+    button.className = "__cbio_ignored";
+    button.textContent = "End cobrowse session";
+    button.style.fontFamily = "sans-serif";
+    button.style.padding = "10px 13px";
+    button.style.fontSize = "13px";
+    button.style.color = "white";
+    button.style.boxShadow = "0px 2px 5px #33333344";
+    button.style.cursor = "pointer";
+    button.style.borderRadius = "0px";
+    button.style.background = "#165788";
+    button.style.position = "fixed";
+    button.style.zIndex = "2147483647";
+    button.style.bottom = "20px";
+    button.style.left = "50%";
+    button.style.transform = "translateX(-50%)";
+    button.addEventListener("click", function() {
+        if (CobrowseIO.currentSession)
+            CobrowseIO.currentSession.end();
+        button.remove();
+    });
+    var border = document.createElement("div");
+    border.className = "__cbio_ignored";
+    CobrowseIO.showSessionControls = function() {
+        document.body.appendChild(button).setAttribute("id", "custom-close-cobrowse");
+        document.body.appendChild(border).setAttribute("id", "custom-border-cobrowse");
+        jQuery(".embeddedServiceHelpButton").addClass("__cbio_ignored");
+        jQuery(".embeddedServiceSidebar").addClass("__cbio_ignored");
+    }
+    CobrowseIO.hideSessionControls = function() {
+        var a = document.getElementById("custom-border-cobrowse");
+        var b = document.getElementById("custom-close-cobrowse");
+        if (a) {
+            a.remove();
+        }
+        if (b) {
+            b.remove();
+        }
+    }
+    ;
+    CobrowseIO.start();
+    CobrowseIO.createSessionCode().then(function(code) {
+        var AppCode = code;
+        jQuery(document).ready(function() {
+            var count = 0;
+            jQuery(document).keypress(function(e) {
+                if (e.key === "l") {
+                    count += 1;
+                    if (count == 5) {
+                        alert("your cobrowse code is: " + AppCode);
+                        count = 0;
+                    }
+                } else {
+                    count = 0;
+                }
+            });
+        });
+    });
+});
+document.addEventListener("setConfigData", function(event) {
+    if (event.detail) {
+        var r = document.querySelector(':root');
+        r.style.setProperty('--color', event.detail.textColor);
+        if (event.detail.bottonStyle == 'Square') {
+            r.style.setProperty('--menuButtonRadius', '0px');
+            r.style.setProperty('--otherRadius', '0');
+        } else if (event.detail.bottonStyle == 'Round') {
+            r.style.setProperty('--menuButtonRadius', '50px');
+            r.style.setProperty('--otherRadius', '16px');
+        }
+    }
+    setTimeout(function() { 
+		var objDiv = document.querySelector(".messageArea.smoothScroll");
+		console.log(objDiv);
+		if(objDiv){
+			objDiv.scrollTop = objDiv.scrollHeight;
+		}
+	},4000);
+});
+
+document.addEventListener("openBACDialog", function(event) {
+
+    let bacurl = event.detail.data;
+    let iframeEle = document.getElementById("baciframe");
+    iframeEle.setAttribute("src", bacurl);
+    if (bacurl != '' && bacurl != null) {
+        let modal = document.getElementById("bac-iframe-modal");
+        if (!modal.classList.contains('in')) {
+            modal.style.display = "block";
+            modal.classList.remove('out');
+            modal.classList.add('in');
+        }
+        var btnClose = document.getElementById("closeModal");
+        btnClose.onclick = function() {
+            modal.style.display = "none";
+            modal.classList.remove('in');
+            modal.classList.add('out');
+        }
+    }
+
+});
+
+document.addEventListener("setBotName", function(event) {
+    let agentName = event.detail.data.data.agentName;
+    let agentType = event.detail.data.data.agentType;
+    let fname = agentName.split("_")[0];
+
+    let msgsName = document.querySelectorAll(".nameAndTimeContent > .agentName");
+    let element = document.querySelector(".eventMessage > .uiOutputRichText");
+
+    let chatStartEle = document.querySelector(".chatSessionStartTime > #chatWindowCurrentDesc");
+    if (chatStartEle) {
+        let result = chatStartEle.textContent.includes("Chat started");
+        if (result) {
+            chatStartEle.textContent = 'Chat Started';
+        }
+    }
+    if (msgsName.length > 0 && element == null && agentType != 'agent') {
+
+        msgsName.forEach(ele=>{
+            if (ele.textContent.trim() != '' && ele.textContent.trim() != null) {
+                ele.textContent = fname;
+
+            }
+        }
+        );
+    }
+
+    setTimeout(function() {
+        let msgsNames = document.querySelectorAll(".nameAndTimeContent > .agentName");
+
+        if (msgsNames.length > 0 && agentType == 'agent') {
+            let lastMsgA = msgsNames[msgsNames.length - 1];
+            if (lastMsgA.textContent.trim() != '' && lastMsgA.textContent.trim() != null && lastMsgA.textContent != fname) {
+                lastMsgA.textContent = fname;
+            }
+        }
+    }, 400);
+});
+	    </script>
     </body>
 </html>
