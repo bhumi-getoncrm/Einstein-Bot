@@ -511,7 +511,7 @@
 
 	    	embedded_svc.init(
                     'https://lwta--qa.sandbox.my.salesforce.com',
-		                'https://lwta--qa.sandbox.my.site.com/LWTACustomerService',
+		                'https://qa-lixilamerica.cs250.force.com/LWTACustomerService',
                     gslbBaseURL,
                     '00DDQ0000008aL2',
                     'Bot_Chatbots_Group',
@@ -559,7 +559,7 @@
 
             if (!window.embedded_svc) {
                 var s = document.createElement('script');
-                s.setAttribute('src', 'https://lwta--qa.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+                s.setAttribute('src', 'https://lwta--qa.my.salesforce.com/embeddedservice/5.0/esw.min.js');
                 s.onload = function () {
                     initESW(null);
                 };
