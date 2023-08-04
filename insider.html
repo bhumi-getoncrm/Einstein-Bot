@@ -2,15 +2,15 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
-        <title>Chatbot Full AS</title>
+        <title>Insider</title>
         <link rel="stylesheet" href="../Einstein-Bot/baciframe.css">
         <style>
             :root {
-                --color: #E75400;
+                --color: #E70026;
                 --fontfamily: 'Gotham';
                 --menuButtonRadius: 0px;
                 --otherRadius: 0px;
-                --dotColor: rgb(231, 84, 0);
+                --dotColor: rgb(231, 0, 38);
                 --logobgcolor: #f2f4f6;
             }
 
@@ -33,22 +33,22 @@
                     background: 0 0 !important;
                 }
             }
-			.embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton.uiButton {
-				background: none !important;
-				border: 1px solid var(--color) !important;
-				background: var(--color) !important;
-			}
-			.embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton.uiButton:hover {
-				background: #fff !important;
-				color: var(--color) !important;
-				border: 1px solid var(--color) !important;
-			}
-			.embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton:not(:disabled):hover.embeddedServiceSidebarButton .label {
-				color: var(--color) !important;
-			}
-			.embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton .label {
-				color: #fff !important;
-			}
+	    .embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton.uiButton {
+		    background: none !important;
+		    border: 1px solid var(--color) !important;
+		    background: var(--color) !important;
+		}
+		.embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton.uiButton:hover {
+		    background: #fff !important;
+		    color: var(--color) !important;
+		    border: 1px solid var(--color) !important;
+		}
+		.embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton:not(:disabled):hover.embeddedServiceSidebarButton .label {
+		    color: var(--color) !important;
+		}
+		.embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton .label {
+		    color: #fff !important;
+		}
             .embeddedServiceLiveAgentStateChatItem.chatMessage button:hover, .embeddedServiceLiveAgentStateChatItem.chatMessage button:hover:focus {
                 background: var(--color) !important;
                 color: #fff !important;
@@ -122,28 +122,28 @@
                 border: 1px var(--color);
             }*/
 		
-			/*.minimizedContainer[c-customMinimized_customMinimized] {*/
-			.sidebarHeader.minimizedContainer {
-				background: url(https://do5nkkzntcenb.cloudfront.net/Salesforce/GroheUS/ChatBubbleIcon-GroheUS.svg) no-repeat scroll 0 0 transparent !important;
-				border: 0 !important;
-				/* height: 1px !important; */
-				/* width: 1px !important; */
-				max-width: 50px !important;
-				max-height: 50px !important;
-				min-width: 50px !important;
-				border-radius: 30px 30px !important;
-				background-size: 100% !important;
-				position: fixed !important;
-				right: 8px !important;
-				bottom: 18px !important;
-				background-color: transparent !important;
-				box-shadow: none !important;
-			}
-		   
-			/*.messageContent[c-customMinimized_customMinimized], */
-			.messageContent {
-				display: none !important;
-			}
+	    /*.minimizedContainer[c-customMinimized_customMinimized] {*/
+	    .sidebarHeader.minimizedContainer {
+		    background: url(https://do5nkkzntcenb.cloudfront.net/Salesforce/GroheUS/ChatBubbleIcon-GroheUS.svg) no-repeat scroll 0 0 transparent !important;
+		    border: 0 !important;
+		    /* height: 1px !important; */
+		    /* width: 1px !important; */
+		    max-width: 50px !important;
+		    max-height: 50px !important;
+		    min-width: 50px !important;
+		    border-radius: 30px 30px !important;
+		    background-size: 100% !important;
+		    position: fixed !important;
+		    right: 8px !important;
+		    bottom: 18px !important;
+		    background-color: transparent !important;
+		    box-shadow: none !important;
+	    }
+	   
+	    /*.messageContent[c-customMinimized_customMinimized], */
+	    .messageContent {
+		    display: none !important;
+	    }
             .embeddedServiceSidebar.modalContainer {
                 font-family: var(--fontfamily), sans-serif !important;
             }
@@ -419,28 +419,28 @@
                 left: 0;
                 pointer-events: none;
             }
-			/*@media only screen and (max-width: 365px) {
-				position: fixed;
-				z-index: 10000;
-				max-height: 365px;
-				max-width: 365px;
-				background: #0F2B4C;
-				top: 0;
-				left: 0;
-				overflow: scroll;
-				display: none;
-			}*/
-			.screen-meet-div{
-				position: fixed;
-				z-index: 10000;
-				max-height: 365px;
-				max-width: 365px;
-				background: #0F2B4C;
-				overflow: scroll;
-				top: 0;
-				left: 0;
-				display: none;
-			}
+	    /*@media only screen and (max-width: 365px) {
+		position: fixed;
+		z-index: 10000;
+		max-height: 365px;
+		max-width: 365px;
+		background: #0F2B4C;
+		top: 0;
+		left: 0;
+		overflow: scroll;
+		display: none;
+	    }*/
+	    .screen-meet-div{
+		position: fixed;
+		z-index: 10000;
+		max-height: 365px;
+		max-width: 365px;
+		background: #0F2B4C;
+		overflow: scroll;
+		top: 0;
+		left: 0;
+		display: none;
+	    }
         </style>
     </head>
     <!-- jquery cdn for cobrowse -->
@@ -449,7 +449,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <body>
-		<a href="javascript:void(0);" class="letsChatbutton">Let's Chat</a>
+	<a href="javascript:void(0);" class="letsChatbutton">Let's Chat</a>
         <div class="bacmodal fade iframe-modal" id="bac-iframe-modal" role="dialog" aria-hidden="true"
             style="display: none;">
             <div class="bacmodal-dialog">
@@ -480,15 +480,15 @@
 
         <!-- script for the Einstein chatbot -->
         <script type='text/javascript'>
-			$(document).on('click', '.letsChatbutton', function () {
-			  if($(".sidebarMinimized").length > 0 ){
-				  console.log('minimized');
-						$('.minimizedText').trigger('click');
-			  } else {
-				  console.log('firsttime');
-				  $(".helpButtonEnabled").trigger('click');;
-			  }
-			});
+	    $(document).on('click', '.letsChatbutton', function () {
+		if($(".sidebarMinimized").length > 0 ){
+		    console.log('minimized');
+	            $('.minimizedText').trigger('click');
+		} else {
+		    console.log('firsttime');
+		    $(".helpButtonEnabled").trigger('click');;
+		}
+	    });
             var initESW = function (gslbBaseURL) {
 
 		
@@ -498,20 +498,13 @@
                 embedded_svc.settings.language = "";
 
                 embedded_svc.settings.waitingStateBackgroundImgURL =
-                    "https://americanstandard.box.com/shared/static/vnwruhso1ymjlwvq97h38605dawks6u0.png";
+                    "https://americanstandard.box.com/shared/static/nb8hvf8hzdx6oiby8a0h26iy2uxmcehh.png";
                 embedded_svc.settings.defaultMinimizedText =
                     "Chat & Co-Browse with an Expert";
 
-		embedded_svc.settings.extraPrechatFormDetails = [{
-		  "label":"First Name",
-		  "transcriptFields": ["FirstName__c"]
-		}];
-
-		embedded_svc.settings.extraPrechatFormDetails[0].value = 'Sam';
-
-	    	embedded_svc.init(
-                    'https://lwta--qa.sandbox.my.salesforce.com',
-		                'https://qa-lixilamerica.cs250.force.com/LWTACustomerService',
+                embedded_svc.init(
+                    'https://lwta--qa.my.salesforce.com',
+		    'https://qa-lixilamerica.cs250.force.com/LWTACustomerService',
                     gslbBaseURL,
                     '00DDQ0000008aL2',
                     'Bot_Chatbots_Group',
@@ -524,9 +517,8 @@
                         isOfflineSupportEnabled: false
                     }
                 );
-		
-		embedded_svc.addEventHandler("onChatReconnectSuccessful", function() {
-			console.log("onChatReconnectSuccessful event was fired.  liveAgentSessionKey was ");
+	    	embedded_svc.addEventHandler("onChatReconnectSuccessful", function() {
+		    console.log("onChatReconnectSuccessful event was fired.  liveAgentSessionKey was ");
 		});
                 embedded_svc.addEventHandler("afterMinimize", function() {
                   var sidebar = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI');
@@ -541,7 +533,7 @@
                 embedded_svc.addEventHandler("afterMaximize", function() {
                   var container = document.querySelector('.dockableContainer');
                   var height = container.clientHeight;
-                  var width = container.clientWidth;F
+                  var width = container.clientWidth;
                   window.parent.postMessage({
                     frameHeight: embedded_svc.settings.widgetHeight,
                     frameWidth: embedded_svc.settings.widgetWidth
@@ -667,13 +659,13 @@
                         r.style.setProperty('--otherRadius', '16px');
                     }
                 }
-				setTimeout(function() { 
-					var objDiv = document.querySelector(".messageArea.smoothScroll");
-					console.log(objDiv);
-					if(objDiv){
-						objDiv.scrollTop = objDiv.scrollHeight;
-					}
-				},3500);
+		setTimeout(function() { 
+			var objDiv = document.querySelector(".messageArea.smoothScroll");
+			console.log(objDiv);
+			if(objDiv){
+				objDiv.scrollTop = objDiv.scrollHeight;
+			}
+		},3500);
             });
 
             document.addEventListener("openBACDialog", function (event) {
@@ -702,8 +694,8 @@
                	let agentName = event.detail.data.data.agentName;
                	let agentType = event.detail.data.data.agentType;
                	let fname = agentName.split("_")[0];
-				console.log('agentName');
-				let msgsName = document.querySelectorAll(".nameAndTimeContent > .agentName");
+		console.log('agentName');
+		let msgsName = document.querySelectorAll(".nameAndTimeContent > .agentName");
                 let element = document.querySelector(".eventMessage > .uiOutputRichText");
 		    
                 let chatStartEle = document.querySelector(".chatSessionStartTime > #chatWindowCurrentDesc");
@@ -723,16 +715,16 @@
                     });
                 }
 		
-				setTimeout(function() { 
-					let msgsNames = document.querySelectorAll(".nameAndTimeContent > .agentName");
+		setTimeout(function() { 
+		    let msgsNames = document.querySelectorAll(".nameAndTimeContent > .agentName");
 
-					if (msgsNames.length > 0 && agentType == 'agent') {
-					let lastMsgA = msgsNames[msgsNames.length - 1];
-					if (lastMsgA.textContent.trim() != '' && lastMsgA.textContent.trim() != null && lastMsgA.textContent != fname) {
-						lastMsgA.textContent = fname;
-					}
-					}
-				},400);
+		    if (msgsNames.length > 0 && agentType == 'agent') {
+			let lastMsgA = msgsNames[msgsNames.length - 1];
+			if (lastMsgA.textContent.trim() != '' && lastMsgA.textContent.trim() != null && lastMsgA.textContent != fname) {
+			    lastMsgA.textContent = fname;
+			}
+		    }
+		},400);
             });
             
             function addListeners(meetUrl,toggleWindow){
@@ -775,32 +767,32 @@
                 window.addEventListener('mousemove', divMove, true);
             }
 
-			function divMove(e){
-				var div = document.getElementById('screenmeet');
-				div.style.position = 'absolute';
-				div.style.top = e.clientY + 'px';
-				div.style.left = e.clientX + 'px';
-			}
-			document.addEventListener('screenMeetRender', function(event){
-				console.log({event});
-				console.log('URL', event.detail.data.data.screenMeet);
-				  let MeetURL = event.detail.data.data.screenMeet;
-				  let toggleWindow = event.detail.data.data.toggleWindow;
-				  console.log({toggleWindow});
-				  if(MeetURL){
-					  //let url =  MeetURL.split('\'')[1];
-					  addListeners(MeetURL,toggleWindow);
-				  }
-			});
-			function closeDiv(){
-				  let smeet = document.getElementById('screenmeet');
-				  iframeEle = document.getElementById('meetRender');
-					if(iframeEle){
-						iframeEle.src = "";
+		function divMove(e){
+			var div = document.getElementById('screenmeet');
+			div.style.position = 'absolute';
+			div.style.top = e.clientY + 'px';
+			div.style.left = e.clientX + 'px';
+		}
+		document.addEventListener('screenMeetRender', function(event){
+			console.log({event});
+			console.log('URL', event.detail.data.data.screenMeet);
+			  let MeetURL = event.detail.data.data.screenMeet;
+			  let toggleWindow = event.detail.data.data.toggleWindow;
+			  console.log({toggleWindow});
+			  if(MeetURL){
+				  //let url =  MeetURL.split('\'')[1];
+				  addListeners(MeetURL,toggleWindow);
+			  }
+        });
+        function closeDiv(){
+              let smeet = document.getElementById('screenmeet');
+              iframeEle = document.getElementById('meetRender');
+                if(iframeEle){
+                    iframeEle.src = "";
 
-					}
-				  smeet.style.display = 'none';
-			}
+                }
+              smeet.style.display = 'none';
+        }
         </script>
     </body>
 </html>
