@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
-        <title>Chatbot Full AS</title>
+        <title>Chatbot Full GR</title>
         <link rel="stylesheet" href="../Einstein-Bot/baciframe.css">
         <style>
             :root {
                 --color: #E70026;
-                --fontfamily: 'Gotham';
-                --menuButtonRadius: 0px;
-                --otherRadius: 0px;
-                --dotColor: rgb(231, 0, 38);
-                --logobgcolor: #f2f4f6;
-            }
-
-            @font-face {
-                font-family: var(--fontfamily);
-                src: url("../Einstein-Bot/GothamBook.ttf") format('truetype');
-                font-weight: normal;
-                font-style: normal;
+                --fontfamily: 'Roboto';
+                --menuButtonRadius: 10px;
+                --otherRadius: 5px;
+                --dotColor: rgb(6, 143, 199);
+				--grcolor: #3984BE;
+                --logobgcolor: #0D2A4C;
             }
 
             @media only screen and (min-width: 600px) {
@@ -28,27 +23,31 @@
                 }
 
                 .rich-menu-itemOptionIsClicked:hover {
+                    background-color: var(--grcolor) !important;
+                    color: #fff !important;
+                    background: 0 0 !important;
+                }
+            }
+			.embeddedServiceLiveAgentStateChat .endChatContainer .endChatButton {
+                width: calc(100% - 48px);
+                height: 44px;
+                line-height: 19px;
+                margin: 0 24px !important;
+                margin-top: 8px !important;
+            }
+
+            .embeddedServiceLiveAgentStateChat .messageArea,
+            .embeddedServiceLiveAgentStateChatItem.chatMessage button,
+            .embeddedServiceLiveAgentStateChatInputFooter .chasitorText {
+                font-family: var(--fontfamily), sans-serif !important;
+            }
+			
+			.rich-menu-itemOptionIsClicked:hover {
                     background-color: var(--color) !important;
                     color: #fff !important;
                     background: 0 0 !important;
                 }
             }
-	    .embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton.uiButton {
-		    background: none !important;
-		    border: 1px solid var(--color) !important;
-		    background: var(--color) !important;
-		}
-		.embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton.uiButton:hover {
-		    background: #fff !important;
-		    color: var(--color) !important;
-		    border: 1px solid var(--color) !important;
-		}
-		.embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton:not(:disabled):hover.embeddedServiceSidebarButton .label {
-		    color: var(--color) !important;
-		}
-		.embeddedServiceSidebar.modalContainer .embeddedServiceSidebarButton .label {
-		    color: #fff !important;
-		}
             .embeddedServiceLiveAgentStateChatItem.chatMessage button:hover, .embeddedServiceLiveAgentStateChatItem.chatMessage button:hover:focus {
                 background: var(--color) !important;
                 color: #fff !important;
@@ -75,13 +74,7 @@
                 line-height: 15px;
                 margin: 0px 0px;
             }
-            .embeddedServiceLiveAgentStateChat .endChatContainer .endChatButton {
-                width: calc(100% - 48px);
-                height: 44px;
-                line-height: 19px;
-                margin: 0 24px !important;
-                margin-top: 8px !important;
-            }
+
             .embeddedServiceLiveAgentStateChat .messageArea:hover {
                 overflow-y: auto !important;
             }
@@ -113,37 +106,16 @@
             .bar[c-chatHeader_chatHeader] {
                 border-bottom: 2px solid #edeff1 !important;
             }
+
             .head[c-chatHeader_chatHeader] {
                 background-color: var(--color) !important;
             }
 
-            /*.minimizedContainer[c-customMinimized_customMinimized] {
+            .minimizedContainer[c-customMinimized_customMinimized] {
                 background-color: var(--color) !important;
                 border: 1px var(--color);
-            }*/
-		
-	    /*.minimizedContainer[c-customMinimized_customMinimized] {*/
-	    .sidebarHeader.minimizedContainer {
-		    background: url(https://do5nkkzntcenb.cloudfront.net/Salesforce/GroheUS/ChatBubbleIcon-GroheUS.svg) no-repeat scroll 0 0 transparent !important;
-		    border: 0 !important;
-		    /* height: 1px !important; */
-		    /* width: 1px !important; */
-		    max-width: 50px !important;
-		    max-height: 50px !important;
-		    min-width: 50px !important;
-		    border-radius: 30px 30px !important;
-		    background-size: 100% !important;
-		    position: fixed !important;
-		    right: 8px !important;
-		    bottom: 18px !important;
-		    background-color: transparent !important;
-		    box-shadow: none !important;
-	    }
-	   
-	    /*.messageContent[c-customMinimized_customMinimized], */
-	    .messageContent {
-		    display: none !important;
-	    }
+            }
+
             .embeddedServiceSidebar.modalContainer {
                 font-family: var(--fontfamily), sans-serif !important;
             }
@@ -168,7 +140,7 @@
             div[c-lwcchatpack_html_lwcchatpack_html] {
                 text-align: left;
                 background: #f2f4f6;
-                color: #0f2b4c !important;
+                color: var(--color) !important;
                 border-radius: var(--otherRadius) !important;
                 padding: 12px !important;
                 max-width: 90%;
@@ -177,7 +149,7 @@
             .agent.chat-content[c-chatpackmessage_chatpackmessage] {
                 text-align: left !important;
                 background: #f2f4f6 !important;
-                color: #0f2b4c !important;
+                color: var(--color) !important;
                 border-radius: var(--otherRadius) !important;
                 padding: 12px !important;
                 /*     max-width: 256px !important; */
@@ -190,7 +162,7 @@
 
             .chasitor.chat-content[c-chatpackmessage_chatpackmessage] {
                 background: #e7f0f7 !important;
-                color: #0f2b4c !important;
+                color: var(--color) !important;
                 max-width: 256px !important;
             }
 
@@ -234,20 +206,20 @@
             }
 
             .embeddedServiceLiveAgentStateChatItem .chatContent ul.rich-menu-items li:first-of-type:hover {
-                border: 1px solid var(--color) !important;
+                border: 1px solid var(--grcolor) !important;
             }
 
             .endChatButton {
                 border-radius: var(--menuButtonRadius) !important;
                 text-decoration: none !important;
-                font-family: var(--fontfamily), sans-serif;
+                font-family: var(--fontfamily), sans-serif !important;
                 font-weight: 500;
             }
 
             .embeddedServiceSidebarButton {
                 border-radius: var(--menuButtonRadius) !important;
                 text-decoration: none !important;
-                font-family: var(--fontfamily), sans-serif !important;
+                font-family: var(--fontfamily), sans-serif;
                 font-weight: 500;
             }
 
@@ -258,7 +230,7 @@
             }
 
             .chat-content>.rich-button-item {
-                color: #0f2b4c !important;
+                color: var(--color) !important;
                 white-space: break-spaces !important;
                 text-align: center !important;
                 width: 100% !important;
@@ -267,7 +239,7 @@
             }
 
             .rich-button-item:hover {
-                background-color: var(--color) !important;
+                background-color: var(--grcolor) !important;
                 color: #fff !important;
             }
 
@@ -280,8 +252,12 @@
                 /*     width: 250px !important; */
             }
 
+            .rich-menu-items>li:hover {
+                border: 1px solid var(--grcolor) !important;
+            }
+
             .rich-menu-item {
-                color: #0f2b4c !important;
+                color: var(--color) !important;
                 white-space: break-spaces !important;
                 text-align: center !important;
                 width: 100% !important;
@@ -311,7 +287,7 @@
             }
 
             .waitingStateContent {
-                background-color: var(--logobgcolor) !important;
+                background-color: var(--logobgcolor)!important;
             }
 
             .imageIsSet {
@@ -329,14 +305,14 @@
             .waitingCancelChat {
                 border-radius: var(--menuButtonRadius) !important;
                 height: 40px !important;
-                color: #0f2b4c !important;
+                color: var(--color) !important;
                 text-decoration: none !important;
-                border: 1px solid #0f2b4c !important;
+                border: 1px solid var(--color) !important;
             }
 
             .waitingCancelChat:hover {
-                border: 1px solid var(--color) !important;
-                background-color: var(--color) !important;
+                border: 1px solid var(--grcolor) !important;
+                background-color: var(--grcolor) !important;
                 color: #fff !important;
             }
 
@@ -358,7 +334,7 @@
             }
 
             .embeddedServiceSidebarButton:hover {
-                background: var(--color) !important;
+                background: var(--grcolor) !important;
             }
 
             .embeddedServiceLiveAgentStateWaiting .waitingImage {
@@ -372,12 +348,12 @@
 
             .text {
                 background-color: #e7f0f7 !important;
-                color: #0f2b4c !important;
+                color: var(--color) !important;
                 font-weight: 700 !important;
             }
 
             .queuePositionMessage {
-                color: #000000 !important;
+                color: #ffffff !important;
             }
 
             .embeddedServiceLoadingBalls .loadingBall {
@@ -398,12 +374,12 @@
             .embeddedServiceSidebarButton.uiButton,
             .embeddedServiceSidebarButton.uiButton:disabled {
                 background: none !important;
-                border: 1px solid var(--color)  !important;
+                border: 1px solid var(--color) !important;
             }
 
             .embeddedServiceSidebarButton.uiButton:hover,
             .embeddedServiceSidebarButton.uiButton:disabled:hover {
-                background: var(--color) !important;
+                background: var(--grcolor) !important;
                 color: #fff !important;
                 border: 1px solid var(--color) !important;
             }
@@ -419,28 +395,16 @@
                 left: 0;
                 pointer-events: none;
             }
-	    /*@media only screen and (max-width: 365px) {
+            .screen-meet-div{
 		position: fixed;
 		z-index: 10000;
-		max-height: 365px;
-		max-width: 365px;
+		height: 365px;
+		width: 365px;
 		background: #0F2B4C;
+		display: none;
 		top: 0;
 		left: 0;
-		overflow: scroll;
-		display: none;
-	    }*/
-	    .screen-meet-div{
-		position: fixed;
-		z-index: 10000;
-		max-height: 365px;
-		max-width: 365px;
-		background: #0F2B4C;
-		overflow: scroll;
-		top: 0;
-		left: 0;
-		display: none;
-	    }
+	     }
         </style>
     </head>
     <!-- jquery cdn for cobrowse -->
@@ -449,7 +413,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <body>
-	<a href="javascript:void(0);" class="letsChatbutton">Let's Chat</a>
         <div class="bacmodal fade iframe-modal" id="bac-iframe-modal" role="dialog" aria-hidden="true"
             style="display: none;">
             <div class="bacmodal-dialog">
@@ -465,7 +428,6 @@
                 <!-- Modal content-->
             </div>
         </div>
-        
         <div id="screenmeet" class="screen-meet-div">
             <button onclick="closeDiv()" aria-live="off" style="height: 27px; width:27px; float:right" >
                 <!-- <lightning-icon icon-name="utility:close" class="icons"></lightning-icon> -->
@@ -477,7 +439,6 @@
             </button>
             <iframe src="" id="meetRender" allow="camera; microphone" style="height: 100%; width:100%;"></iframe>
 	    </div>
-
         <!-- script for the Einstein chatbot -->
         <script type='text/javascript'>
 		$(document).on('click', '.letsChatbutton', function () {
