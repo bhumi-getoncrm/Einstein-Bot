@@ -1,62 +1,18 @@
-<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #3984BE;
-		font-family: "Roboto Regular", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #3984BE;
-	}
-</style>
-
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Chat
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-
-		embedded_svc.init(
-			'https://lwta--full.sandbox.my.salesforce.com',
-			'https://lwta--full.sandbox.my.site.com/LWTACustomerService',
-			gslbBaseURL,
-			'00DD6000000VTXs',
-			'Bot_Chatbots_Group',
-			{
-				baseLiveAgentContentURL: 'https://c.la3-c1cs-ia6.salesforceliveagent.com/content',
-				deploymentId: '5723l000000CmZ3',
-				buttonId: '5733l000000CnFp',
-				baseLiveAgentURL: 'https://d.la3-c1cs-ia6.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'Bot_Chatbots_Group',
-				isOfflineSupportEnabled: false
-			}
-		);
-	};
-
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://lwta--full.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
-	}
-</script>
+<html>
+	<head>
+		<title>Test Old Insider</title>
+	</head>
+	<body>
+		<div id="global-livechat">
+		      <script type='text/javascript' src='https://c.la1-c1-iad.salesforceliveagent.com/content/g/js/44.0/deployment.js'></script>
+		
+		      <script type='text/javascript'>liveagent.init('https://d.la1-c1-iad.salesforceliveagent.com/chat', '5721N000000TZem', '00D1N000001UL7U');</script>
+		
+		      <img id="liveagent_button_online_5731N000000TawT" href="javascript://Chat" style="display: none; border: 0px none; cursor: pointer" alt="Online" src="/assets/images/live-chat-icon.png" onclick="window.open('https://lixilamerica.force.com/LiveAgent_Launcher?id=5731N000000TawT','popup','width=420,height=480,toolbar=0,menubar=0,location=0,scrollbars=0 ')" />
+		
+		      <img id="liveagent_button_offline_5731N000000TawT" alt="Offline" style="display: none; border: 0px none; " src="/assets/images/blank.gif" />
+		
+		      <script type="text/javascript">if (!window._laq) {window._laq = []; } window._laq.push(function () {liveagent.showWhenOnline('5731N000000TawT', document.getElementById('liveagent_button_online_5731N000000TawT')); liveagent.showWhenOffline('5731N000000TawT', document.getElementById('liveagent_button_offline_5731N000000TawT')); });</script>
+		</div>
+	</body>
+</html>
