@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Test Old Insider</title>
+	</head>
+	<body>
+		<div id="global-livechat">
+		 	<script type="text/javascript">
+				if (!window._laq) {
+					window._laq = []; 
+				} 
+				window._laq.push(function () {
+					liveagent.showWhenOnline('5731N000000TawT', document.getElementById('liveagent_button_online_5731N000000TawT'));
+					liveagent.showWhenOffline('5731N000000TawT', document.getElementById('liveagent_button_offline_5731N000000TawT')); 
+				});
+			</script>
+			<script type='text/javascript' src='https://c.la3-c1cs-ia6.salesforceliveagent.com/content/g/js/60.0/deployment.js'></script>
+	
+			<script type='text/javascript'>
+				liveagent.addButtonEventHandler('5731N000000TawT',function (e){
+					if(e == liveagent.BUTTON_EVENT.BUTTON_AVAILABLE){			   
+						liveagent.startChatWithWindow('5731N000000TawT','mywindowid');			
+					}		
+				});
+				liveagent.init('https://d.la3-c1cs-ia6.salesforceliveagent.com/chat', '5721N000000TZem', '00DD6000000VTXs');
+			</script>
+	
+			<img id="liveagent_button_online_5731N000000TawT" href="javascript://Chat" style="display: none; border: 0px none; cursor: pointer" alt="Online" src="/assets/images/live-chat-icon.png" onclick="window.open('https://lwta--full.sandbox.my.site.com/LiveAgent_Launcher?id=5731N000000TawT','popup','width=420,height=480,toolbar=0,menubar=0,location=0,scrollbars=0 ')" />
+	
+			<img id="liveagent_button_offline_5731N000000TawT" alt="Offline" style="display: none; border: 0px none; " src="/assets/images/blank.gif" />
+		
+		</div>
+	</body>
+</html>
